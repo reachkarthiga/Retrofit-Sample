@@ -7,9 +7,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 private const val baseURL = "http://192.168.29.155:8080/api/"
@@ -27,6 +25,15 @@ interface HolidaysAPIService {
 
     @DELETE("holidays/{holidayName}")
     suspend fun deleteHoliday(@Path("holidayName") name :String) :Response<Unit>
+
+    @POST("holidays")
+    suspend fun postHoliday(@Body holiday: Holiday) :Response<Unit>
+
+    @PATCH("holidays")
+    suspend fun patchHoliday(@Body holiday: Holiday) : Response<Unit>
+
+    @GET("holidays/{holidayName}")
+    suspend fun getHolidayByName(@Path("holidayName") name: String) :Response<Holiday>
 
 }
 

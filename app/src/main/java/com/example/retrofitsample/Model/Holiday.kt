@@ -7,8 +7,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Holiday(
-    val id :Long,
+
     @Json(name = "holidayName")
     val name:String,
-    val date : String
+    val date : String,
+    val id :Long =0,
 ) :Parcelable
